@@ -208,7 +208,7 @@ export default function PrimarySearchAppBar() {
               
             </IconButton> */}
             <Button variant="contained" color="primary" disableElevation>
-Favorite</Button>
+Favourite</Button>
             <Button variant="contained" color="primary" disableElevation>
 Log In</Button>
 
