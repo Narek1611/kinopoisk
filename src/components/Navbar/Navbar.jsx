@@ -3,19 +3,15 @@ import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import GroupWorkIcon from '@material-ui/icons/GroupWork';
-import StarsIcon from '@material-ui/icons/Stars';
+import SearchIcon from '@material-ui/icons/Search';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import {
-  Link
-} from 'react-router-dom';
-
+import MoreIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -24,14 +20,11 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  loginName: {fontSize: "10 vh",
-margin: "5px"}
-  ,
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-      width: "350px"
+      width: '350px',
     },
   },
   search: {
@@ -56,15 +49,11 @@ margin: "5px"}
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    // justifyContent: 'center',
-    },
+    justifyContent: 'center',
+  },
   inputRoot: {
     color: 'inherit',
   },
-  navbarColor: {
-    background: "#b11d1d"
-  }
-  ,
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -72,7 +61,7 @@ margin: "5px"}
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '30ch',
+      width: '20ch',
     },
   },
   sectionDesktop: {
@@ -87,6 +76,13 @@ margin: "5px"}
       display: 'none',
     },
   },
+  loginName: {
+    fontSize: '25px',
+    margin: '5px',
+  },
+  navbarColor: {
+    background: '#AE0418',
+  },
 }));
 
 export default function PrimarySearchAppBar() {
@@ -96,10 +92,6 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -124,9 +116,7 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-    >
-
-    </Menu>
+    ></Menu>
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -140,23 +130,22 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-        <StarsIcon />
-        </IconButton>
-        <p>Favorite</p>
-      </MenuItem>
-            <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-                      <VpnKeyIcon />
-        </IconButton>
-        <p>Log In</p>
-      </MenuItem>
+      <Link to="/favorite">
+        <MenuItem>
+          <IconButton color="inherit">
+            <FavoriteIcon />
+          </IconButton>
+          <p>Favorite</p>
+        </MenuItem>
+      </Link>
+      <Link to="/login">
+        <MenuItem>
+          <IconButton color="inherit">
+            <VpnKeyIcon />
+          </IconButton>
+          <p>Log In</p>
+        </MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -165,21 +154,16 @@ export default function PrimarySearchAppBar() {
       <AppBar position="static" className={classes.navbarColor}>
         <Toolbar>
           <Link to="/">
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <GroupWorkIcon fontSize='large'/>
-          </IconButton>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="open drawer"
+            >
+              <GroupWorkIcon fontSize="large" />
+              Cinema Nevs
+            </IconButton>
           </Link>
-          <Link to="/">
-          <Typography className={classes.title} variant="h6" noWrap>
-            KINOPOISK
-          </Typography>
-          </Link>
-
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -196,21 +180,20 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link to="/favorite">
-          <IconButton aria-label="show 17 new notifications" color="inherit">
-          <p className={classes.loginName}>FAVORITE</p>
-            <StarsIcon />
-            </IconButton>
+              <IconButton color="inherit">
+                <p className={classes.loginName}>Favorite</p>
+                <FavoriteIcon />
+              </IconButton>
             </Link>
             <Link to="/login">
-            <IconButton color="inherit">
-                        <p className={classes.loginName}>LOG IN</p>
-                        <VpnKeyIcon />
-            </IconButton>     
-            </Link>    
+              <IconButton color="inherit">
+                <p className={classes.loginName}>Log In</p>
+                <VpnKeyIcon />
+              </IconButton>
+            </Link>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
-              aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}

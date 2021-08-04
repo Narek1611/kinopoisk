@@ -1,18 +1,9 @@
-// import React from "react";
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link,
-//   Redirect,
-//   useHistory,
-//   useLocation
-// } from "react-router-dom";
+import React from "react";
 
-// export default function Login() {
-//     return(
-//         <div>
-//             Vorn a?
-//         </div>
-//     )
-// }
+export default function Login(){
+    return(
+        <>
+        bababababab
+        </>
+    )
+}

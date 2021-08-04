@@ -9,14 +9,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { getImgUrl } from "../../service";
+import { Link } from "react-router-dom"
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "59vh",
-    margin: "25px",
+    margin: "27px",
     cursor: "pointer",
     border: "1px solid dimgrey"
   },
@@ -49,13 +49,9 @@ export default function RecipeReviewCard(props) {
 //   console.log(props);
 
   return (
+    <Link to={`/${props.id}`}>
     <Card className={classes.root}>
       <CardHeader
-                action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={props.title}
         subheader={props.release_date}
       />
@@ -76,5 +72,6 @@ export default function RecipeReviewCard(props) {
        </CardActions>
 
     </Card>
+    </Link>
   );
 }

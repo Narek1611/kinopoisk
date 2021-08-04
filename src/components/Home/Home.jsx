@@ -4,15 +4,15 @@ import MovieCard from "../MovieCard/MovieCard"
 import { getMoviesByPage } from "../../service";
 import { useEffect } from "react";
 import Box from '@material-ui/core/Box';
-import "./Home.module.css"
+import "./Home.css"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Favorite from "../Favorite/Favorite";
 import Login from "../Authentication/Login/Login"
+import MovieDetail from "../MovieDetails/MovieDetails";
 
 export default function Home() {
   const [movies, setMovies] = useState([])
@@ -28,7 +28,7 @@ console.log(movies);
       <Navbar />
       <Switch>
         <Route exact path="/">
-      <Box display="flex" flexWrap="wrap">
+      <Box display="flex" flexWrap="wrap" className="backgroundHome">
       {
         movies.map(movie=>{
          return <MovieCard
@@ -37,6 +37,7 @@ console.log(movies);
            path={movie.backdrop_path}
            release_date={movie.release_date}
            overview={movie.overview}
+           id={movie.id}
            />
 
         })
@@ -49,6 +50,7 @@ console.log(movies);
       <Route path="/login">
         <Login />
       </Route>
+      <Route path="/:id" children={<MovieDetail />}></Route>
       </Switch>
     </div>
     </Router>
