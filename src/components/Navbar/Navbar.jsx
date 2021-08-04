@@ -12,6 +12,9 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import GroupWorkIcon from '@material-ui/icons/GroupWork';
 import StarsIcon from '@material-ui/icons/Stars';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import {
+  Link
+} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -161,6 +164,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbarColor}>
         <Toolbar>
+          <Link to="/">
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -169,9 +173,13 @@ export default function PrimarySearchAppBar() {
           >
             <GroupWorkIcon fontSize='large'/>
           </IconButton>
+          </Link>
+          <Link to="/">
           <Typography className={classes.title} variant="h6" noWrap>
             KINOPOISK
           </Typography>
+          </Link>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -187,14 +195,18 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <Link to="/favorite">
           <IconButton aria-label="show 17 new notifications" color="inherit">
           <p className={classes.loginName}>FAVORITE</p>
             <StarsIcon />
             </IconButton>
+            </Link>
+            <Link to="/login">
             <IconButton color="inherit">
                         <p className={classes.loginName}>LOG IN</p>
                         <VpnKeyIcon />
-            </IconButton>          
+            </IconButton>     
+            </Link>    
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
