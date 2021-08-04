@@ -6,13 +6,13 @@ import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { Typography } from '@material-ui/core';
 import GroupWorkIcon from '@material-ui/icons/GroupWork';
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
-
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-      width: '350px',
     },
   },
   search: {
@@ -38,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
+      marginLeft: theme.spacing(25),
       width: 'auto',
     },
   },
@@ -84,28 +83,22 @@ const useStyles = makeStyles((theme) => ({
     background: '#AE0418',
   },
 }));
-
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
-
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -118,7 +111,6 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     ></Menu>
   );
-
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -148,7 +140,6 @@ export default function PrimarySearchAppBar() {
       </Link>
     </Menu>
   );
-
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbarColor}>
@@ -161,8 +152,12 @@ export default function PrimarySearchAppBar() {
               aria-label="open drawer"
             >
               <GroupWorkIcon fontSize="large" />
-              Cinema Nevs
             </IconButton>
+          </Link>
+          <Link to='/'>
+          <Typography className={classes.title} variant="h6" noWrap>
+            KINOPOISK
+          </Typography>
           </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

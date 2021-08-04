@@ -1,0 +1,9 @@
+.backgroundLoading {
+    background: url("../../Images/backgroundHome.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.backgroundDetails {
+    height: 80vh
+}

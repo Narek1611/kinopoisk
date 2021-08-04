@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import MovieCard from "../MovieCard/MovieCard"
-import { getMoviesByPage } from "../../service";
+import { getGenres, getMoviesByPage } from "../../service";
 import { useEffect } from "react";
 import Box from '@material-ui/core/Box';
 import "./Home.css"
@@ -13,15 +13,25 @@ import {
 import Favorite from "../Favorite/Favorite";
 import Login from "../Authentication/Login/Login"
 import MovieDetail from "../MovieDetails/MovieDetails";
+import findGenreName from "../../helpers/findGenreName";
 
 export default function Home() {
   const [movies, setMovies] = useState([])
+  const [genres, setGenres] = useState([])
 useEffect(()=>{
   getMoviesByPage(1).then(({results})=>{
     setMovies(results)
   })
 },[])
 console.log(movies);
+
+useEffect(()=>{
+  getGenres().then(({genres})=>{
+    setGenres(genres)
+  })
+},[])
+
+
   return (
     <Router>
     <div>
@@ -38,6 +48,7 @@ console.log(movies);
            release_date={movie.release_date}
            overview={movie.overview}
            id={movie.id}
+           genre={findGenreName(genres, movie.genre_ids)}
            />
 
         })
