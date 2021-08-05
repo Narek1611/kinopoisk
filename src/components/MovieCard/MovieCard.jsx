@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { getGenres, getImgUrl } from "../../service";
+import {  getImgUrl } from "../../service";
 import { Link } from "react-router-dom"
 
 
@@ -46,7 +46,7 @@ export default function RecipeReviewCard(props) {
     setExpanded(!expanded);
   };
 
-//   console.log(props);
+  console.log(props);
 
   return (
     <Card className={classes.root}>
@@ -65,9 +65,9 @@ export default function RecipeReviewCard(props) {
         <Typography variant="body2" color="textSecondary" component="p">
           <p>{props.overview.slice(0,70)}...</p>
                   </Typography>
-                  {props.genre.map((genre)=>{
+                  {props.genre.map((genre, index)=>{
                     return (
-            <span>{genre} </span>)
+            <span key={index}>{genre} </span>)
           })}
       </CardContent>
       <CardActions disableSpacing>

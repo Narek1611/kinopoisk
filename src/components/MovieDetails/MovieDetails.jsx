@@ -41,10 +41,14 @@ export default function MovieDetail() {
           </div>
         <div className="info">
           <b>About The Film</b>
-          <p>{movieDetail.vote_average}</p>
-          <i>
-          {movieDetail.overview}
-          </i>
+          <br/>
+          {/* <br/> */}
+          <p><i>Rating:</i> {movieDetail.vote_average}</p>
+          <p><i>Release Date:</i> {movieDetail.release_date}</p>
+          <p><i>Runtime:</i> {movieDetail.runtime}m</p>
+          {movieDetail.tagline === "" ? <></> : <p><i>Tagline:</i> "{movieDetail.tagline}"</p>}
+          <br />
+          <b><i>{movieDetail.overview}</i></b>
           </div>
       </div>
     </div>

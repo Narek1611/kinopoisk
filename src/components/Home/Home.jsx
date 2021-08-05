@@ -61,7 +61,7 @@ useEffect(()=>{
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/:id" children={<MovieDetail />}></Route>
+      <Route path="/:id" children={<MovieDetail movie={movies.id}/>}></Route>
       </Switch>
     </div>
     </Router>
