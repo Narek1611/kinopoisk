@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getImgUrl, getMovieById } from "../../service";
+import { getImgUrl, getMovieById } from "../../helpers/service";
 import Loading from "../Loading/Loading";
 import Box from "@material-ui/core/Box";
 import "./MovieDetails.css";

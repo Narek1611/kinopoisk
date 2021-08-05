@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import MovieCard from "../MovieCard/MovieCard"
-import { getGenres, getMoviesByPage } from "../../service";
+import { getGenres, getMoviesByPage } from "../../helpers/service";
 import { useEffect } from "react";
 import Box from '@material-ui/core/Box';
 import "./Home.css"

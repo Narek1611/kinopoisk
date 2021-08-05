@@ -1,0 +1,6 @@
+.backgroundLogin {
+    height: calc(100vh - 68.56px);
+    background-image: url("https://wallpaperaccess.com/full/1216335.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+  }
